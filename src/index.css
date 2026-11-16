@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-espresso: #1C110A;
+  --color-roasted: #3B2314;
+  --color-mocha: #6F4E37;
+  --color-caramel: #C8872E;
+  --color-crema: #F5E9D8;
+  --color-himalayan: #2F5D50;
+  --color-snow: #FFFAF3;
+
+  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+    font-family: var(--font-sans);
+    background-color: var(--color-crema);
+  }
+
+  html.dark {
+    background-color: var(--color-espresso);
+  }
+
+  body {
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Subtle organic grain overlay for warm specialty coffee texture */
+.grain-overlay {
+  background-image: radial-gradient(rgba(255, 250, 243, 0.06) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Dark mode optical compensation for body prose */
+.dark body {
+  letter-spacing: 0.008em;
+}
+
+/* Accessible focus ring */
+*:focus-visible {
+  outline: 2px solid #C8872E;
+  outline-offset: 2px;
+}

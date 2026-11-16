@@ -1,0 +1,6 @@
+{
+  "name": "Himalayan Arabica Beans",
+  "description": "Specialty Himalayan coffee house in Thamel, Kathmandu serving 100% Nepali Arabica coffee, 100+ flavors, and fresh artisan pastries since 2012.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

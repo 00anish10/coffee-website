@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1C110A" />
+    <title>Himalayan Arabica Beans – Specialty Coffee House in Thamel, Kathmandu</title>
+    <script>
+      // Apply the saved theme before first paint to avoid a light/dark flash.
+      (function () {
+        try {
+          if (localStorage.getItem('hab-theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <meta
+      name="description"
+      content="Serving 100% organic Nepali Arabica coffee, 100+ coffee flavors, and freshly baked pastries in the heart of Thamel, Kathmandu since 2012."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Himalayan Arabica Beans" />
+    <meta
+      property="og:title"
+      content="Himalayan Arabica Beans – Specialty Coffee House in Thamel, Kathmandu"
+    />
+    <meta
+      property="og:description"
+      content="Serving 100% organic Nepali Arabica coffee, 100+ coffee flavors, and freshly baked pastries in the heart of Thamel, Kathmandu since 2012."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Himalayan Arabica Beans – Specialty Coffee House in Thamel, Kathmandu"
+    />
+    <meta
+      name="twitter:description"
+      content="Serving 100% organic Nepali Arabica coffee, 100+ coffee flavors, and freshly baked pastries in the heart of Thamel, Kathmandu since 2012."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CafeOrCoffeeShop",
+        "name": "Himalayan Arabica Beans",
+        "description": "One of the finest coffee houses in Nepal, serving 100% organic Arabica beans from the Himalayas with 100+ flavors of fresh coffee and artisan pastries since 2012.",
+        "foundingDate": "2012",
+        "servesCuisine": ["Specialty Coffee", "Himalayan Arabica", "Artisan Pastries", "Bakery"],
+        "priceRange": "NPR 200 - NPR 650",
+        "telephone": "+977-9860199935",
+        "email": "himalayanarabicabeans@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Saat Ghumti Marg, Thamel",
+          "addressLocality": "Kathmandu",
+          "addressRegion": "Bagmati",
+          "postalCode": "44600",
+          "addressCountry": "NP"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 27.7153706,
+          "longitude": 85.3088386
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "07:00",
+            "closes": "21:00"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-espresso text-snow antialiased selection:bg-caramel selection:text-espresso">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

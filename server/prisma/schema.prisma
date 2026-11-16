@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id          String     @id @default(cuid())
+  name        String
+  slug        String     @unique
+  description String
+  sortOrder   Int        @default(0) @map("sort_order")
+  menuItems   MenuItem[]
+  createdAt   DateTime   @default(now()) @map("created_at")
+
+  @@map("categories")
+}
+
+model MenuItem {
+  id           String   @id @default(cuid())
+  name         String
+  description  String
+  priceNpr     Int      @map("price_npr")
+  imageUrl     String   @map("image_url")
+  originNote   String   @default("100% Nepali Arabica") @map("origin_note")
+  isFeatured   Boolean  @default(false) @map("is_featured")
+  isAvailable  Boolean  @default(true) @map("is_available")
+  categoryId   String   @map("category_id")
+  category     Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("menu_items")
+}
+
+model Testimonial {
+  id         String   @id @default(cuid())
+  authorName String   @map("author_name")
+  authorRole String   @map("author_role")
+  origin     String
+  rating     Int      @default(5)
+  quote      String
+  visitDate  String   @map("visit_date")
+  isFeatured Boolean  @default(true) @map("is_featured")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@map("testimonials")
+}
+
+model GalleryImage {
+  id          String   @id @default(cuid())
+  title       String
+  category    String
+  caption     String
+  imageUrl    String   @map("image_url")
+  aspectRatio String   @default("landscape") @map("aspect_ratio")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("gallery_images")
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  status    String   @default("unread")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("contact_messages")
+}
+
+model NewsletterSubscriber {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  subscribedAt DateTime @default(now()) @map("subscribed_at")
+
+  @@map("newsletter_subscribers")
+}

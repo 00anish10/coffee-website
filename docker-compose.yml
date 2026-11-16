@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: himalayan_arabica_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-himalayan}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-arabica2012}
+      POSTGRES_DB: ${POSTGRES_DB:-himalayan_arabica_beans}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-himalayan}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: himalayan_arabica_app
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server/uploads:/app/server/uploads
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-himalayan}:${POSTGRES_PASSWORD:-arabica2012}@postgres:5432/${POSTGRES_DB:-himalayan_arabica_beans}
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@himalayanarabicabeans.com}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-ThamelArabica2012!}
+      VITE_GOOGLE_MAPS_API_KEY: ${VITE_GOOGLE_MAPS_API_KEY:-}
+
+volumes:
+  postgres_data:
